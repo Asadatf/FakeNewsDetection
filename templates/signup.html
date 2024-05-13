@@ -1,0 +1,129 @@
+<head>
+    <link rel="stylesheet" href="../static/signup.css">
+    <title>Fake News Detection</title>
+</head>
+
+<body>
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form action="/signup" method="POST" onsubmit="return validateForm()">
+        <h1>Create Account</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fab fa-facebook-f"></i>
+            <img src="/static/fb.svg" alt="Facebook" width="24" height="24"/>
+          </a>
+          <a href="#" class="social"><i class="fab fa-google-plus-g"></i>
+            <img src="/static/google.svg" alt="Google" width="24" height="24"/>
+          </a>
+          <a href="#" class="social"><i class="fab fa-linkedin-in"></i>
+            <img src="/static/in.svg" alt="Linkedin" width="24" height="24"/>
+          </a>
+        </div>
+        <span>or use your email for registration</span>
+        <input type="text" placeholder="Name" id="name" name="name"/>
+        <input type="email" placeholder="Email" id="email" name="email"/>
+        <input type="password" placeholder="Password" id="password" name="password"/>
+        <span id="password-error" class="error"></span>
+        <button>Sign Up</button>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form action="/signin" method="POST">
+        <h1>Sign in</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fab fa-facebook-f"></i>
+            <img src="/static/fb.svg" alt="Facebook" width="24" height="24"/>
+          </a>
+          <a href="#" class="social"><i class="fab fa-google-plus-g"></i>
+            <img src="/static/google.svg" alt="Google" width="24" height="24"/>
+          </a>
+          <a href="#" class="social"><i class="fab fa-linkedin-in"></i>
+            <img src="/static/in.svg" alt="Linkedin" width="24" height="24"/>
+          </a>
+        </div>
+        <span>or use your account</span>
+        <input type="email" placeholder="Email" name="email"/>
+        <input type="password" placeholder="Password" name="password"/>
+        <span class="error">{{ error }}</span>
+        <a href="#">Forgot your password?</a>
+        <button>Sign In</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p>To keep connected with us please login with your personal info</p>
+          <button className="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <img src="/static/fake.jpeg" alt="Your Image" />
+          <button className="ghost" id="signUp">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const signUpContainer = document.querySelector('.sign-up-container');
+    const signInContainer = document.querySelector('.sign-in-container');
+    const Container = document.querySelector('.container');
+
+    signUpButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        Container.classList.add('right-panel-active');
+        signUpContainer.style.display = 'block';
+        signInContainer.style.display = 'none';
+    });
+
+    signInButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        Container.classList.remove('right-panel-active');
+        signUpContainer.style.display = 'none';
+        signInContainer.style.display = 'block';
+    });
+
+    function validateForm() {
+      var password = document.getElementById("password").value;
+      var passwordError = document.getElementById("password-error");
+
+      // Check if the password is empty
+      if (password.trim() === "") {
+          passwordError.innerText = "Please enter a password.";
+          return false;
+      }
+
+      // Check if the password length is less than 8 characters
+      if (password.length < 8) {
+          passwordError.innerText = "Password must be at least 8 characters long.";
+          return false;
+      }
+
+      // Check if the password contains at least one uppercase letter
+      if (!/[A-Z]/.test(password)) {
+          passwordError.innerText = "Password must contain at least one uppercase letter.";
+          return false;
+      }
+
+      // Check if the password contains at least one number
+      if (!/\d/.test(password)) {
+          passwordError.innerText = "Password must contain at least one number.";
+          return false;
+      }
+
+      // Check if the password contains at least one special character
+      if (!/[^A-Za-z0-9]/.test(password)) {
+          passwordError.innerText = "Password must contain at least one special character.";
+          return false;
+      }
+
+      // If all checks pass, clear the error message and return true to submit the form
+      passwordError.innerText = "";
+      return true;
+    }
+
+</script>
+
+</body>
+  
