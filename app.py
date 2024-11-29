@@ -6,8 +6,8 @@ import pickle
 import re
 import os
 
-vector = pickle.load(open("vectorizer.pkl", 'rb'))
-model = pickle.load(open("finalized_model.pkl", 'rb'))
+vector = pickle.load(open("models/vectorizer.pkl", 'rb'))
+model = pickle.load(open("models/finalized_model.pkl", 'rb'))
 
 app = Flask(__name__)
 

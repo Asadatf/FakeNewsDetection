@@ -1,0 +1,43 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Test cache files
+.pytest_cache/
+
+# Virtual environment folder
+newsapp/
+
+# Flask instance folder (if you use one)
+instance/
+
+# MySQL or other database configuration files
+mysqlconnection.py
+
+# Log files
+*.log
+
+# Temporary and cloud files (like iCloud-specific files)
+*.icloud
+
+# Model files (exclude model files from Git)
+finalized_model.pkl
+vectorizer.pkl
+
+# get-pip.py file
+get-pip.py
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+*.env
